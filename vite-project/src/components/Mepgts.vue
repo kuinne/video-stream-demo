@@ -5,14 +5,12 @@ import VConsole from 'vconsole'
 const isSupported = ref(true)
 onMounted(() => {
   new VConsole()
-  fetch('http://192.168.1.4:5173:8080/live/livestream.flv').then((res) => {
-    console.log(res.json())
-  })
   var videoElement = document.getElementById('videoElement')
   var player = mpegts.createPlayer({
     type: 'flv', // could also be mpegts, m2ts, flv
     isLive: true,
-    url: 'http://192.168.1.4:5173:8080/live/livestream.flv',
+    // url: 'http://192.168.1.4:5173:8080/live/livestream.flv',
+    url: 'http://192.168.1.4:8080/live/livestream.flv',
   })
   player.attachMediaElement(videoElement)
   player.load()
