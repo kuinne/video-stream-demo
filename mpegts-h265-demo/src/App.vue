@@ -1,25 +1,29 @@
 <script setup>
 import mpegts from "mpegts.js";
-import { ref } from "vue";
-
+import { ref, onMounted } from "vue";
+import VConsole from "vconsole";
+const isSupported = ref(true);
 onMounted(() => {
-  if (mpegts.getFeatureList().mseLivePlayback) {
-    var videoElement = document.getElementById("videoElement");
-    var player = mpegts.createPlayer({
-      type: "flv", // could also be mpegts, m2ts, flv
-      isLive: true,
-      url: "http://example.com/live/livestream.ts",
-    });
-    player.attachMediaElement(videoElement);
-    player.load();
-    player.play();
-  }
+  new VConsole();
+  fetch("http://172.168.71.59:8080/live/livestream.flv").then((res) => {
+    console.log(res.json());
+  });
+  var videoElement = document.getElementById("videoElement");
+  var player = mpegts.createPlayer({
+    type: "flv", // could also be mpegts, m2ts, flv
+    isLive: true,
+    url: "http://172.168.71.59:8080/live/livestream.flv",
+  });
+  player.attachMediaElement(videoElement);
+  player.load();
+  player.play();
 });
 </script>
 
 <template>
   <div>
-    <video id="videoElement"></video>
+    <h3>hello</h3>
+    <video id="videoElement" muted controls></video>
   </div>
 </template>
 

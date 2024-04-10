@@ -13,8 +13,9 @@ services:
     volumes:
       - "/Users/das/Desktop/code/node-media-rtmp-server/srs/doc:/usr/local/srs/doc"
     # command: ffmpeg -stream_loop -1 -re -i doc/source.flv -acodec copy -vcodec libx265 -f flv rtmp://host.docker.internal/live/livestream
-    command: ffmpeg -stream_loop -1 -re -i doc/911Mothers_2010W-480p.mp4 -acodec copy -vcodec libx264 -f flv rtmp://host.docker.internal/live/livestream
+    # command: ffmpeg -stream_loop -1 -re -i doc/911Mothers_2010W-480p.mp4 -acodec copy -vcodec libx264 -f flv rtmp://host.docker.internal/live/livestream
     # command: ffmpeg -stream_loop -1 -re -i doc/h265.mp4 -acodec copy -vcodec copy -f flv rtmp://host.docker.internal/live/livestream
+    command: ffmpeg -stream_loop -1 -re -i doc/h265_high.mp4 -acodec copy -vcodec copy -f flv rtmp://host.docker.internal/live/livestream
     depends_on:
       - srs
 
